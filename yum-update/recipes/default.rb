@@ -8,7 +8,7 @@
 #
 
 execute "yum-update" do
-    user    "root"
-    command "yum update -y"
-    action  :run
+  user    "root"
+  command "yum update -y"
+  action  :run
 end
