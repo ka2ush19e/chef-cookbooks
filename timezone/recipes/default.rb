@@ -6,6 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+
 if platform_family?("rhel")
   link "/etc/localtime" do
     to "/usr/share/zoneinfo/#{node.timezone}"
