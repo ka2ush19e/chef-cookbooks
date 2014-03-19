@@ -1,1 +1,1 @@
-default["timezone"] = "UTC"
+default[:timezone] = "UTC"

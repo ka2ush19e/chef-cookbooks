@@ -1,9 +1,9 @@
-name             'hostname'
+name             'cdh4-pseudo'
 maintainer       'YOUR_NAME'
 maintainer_email 'YOUR_EMAIL'
 license          'All rights reserved'
-description      'Installs/Configures hostname'
+description      'Installs/Configures cdh4-pseudo'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.0'
 
-depends 'hostsfile'
+depends 'yum'
