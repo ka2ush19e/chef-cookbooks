@@ -10,10 +10,6 @@
 fqdn = node[:net][:fqdn]
 ip   = node[:net][:ip]
 
-if fqdn == node[:fqdn]
-  return
-end
-
 file "/etc/sysconfig/network" do
   rc = Chef::Util::FileEdit.new(path)
   rc.search_file_replace_line(/^HOSTNAME/, "HOSTNAME=#{fqdn}")
