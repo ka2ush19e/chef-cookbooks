@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: cdh4-pseudo
+# Cookbook Name:: elasticsearch
 # Recipe:: yum_repo
 #
 # Copyright (C) 2014 YOUR_NAME

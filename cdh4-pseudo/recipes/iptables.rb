@@ -6,6 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+
 %w{iptables ip6tables}.each do |pkg|
   service pkg do
     action [:stop, :disable]
