@@ -7,24 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-%w{
-  lsof
-  iptables
-  jwhois
-  curl
-  wget
-  rsync
-  nmap
-  traceroute
-  ethtool
-  iproute
-  iputils
-  nc
-  tcputils
-  tcpdump
-  elinks
-  lynx
-}.each do |pkg|
+node[:network_tools].each do |pkg|
   package pkg do
     action :install
   end
