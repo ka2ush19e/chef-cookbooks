@@ -10,6 +10,7 @@
 include_recipe "mapr-pseudo::user"
 include_recipe "mapr-pseudo::ulimit"
 include_recipe "mapr-pseudo::sysctl"
+include_recipe "mapr-pseudo::iptables"
 
 include_recipe "mapr-pseudo::yum_repo"
 # include_recipe "mapr-pseudo::mapr"
