@@ -11,6 +11,7 @@
   mapr-cldb
   mapr-fileserver
   mapr-jobtracker
+  mapr-metrics
   mapr-nfs
   mapr-tasktracker
   mapr-webserver
