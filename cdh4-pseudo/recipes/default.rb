@@ -10,3 +10,4 @@
 include_recipe "cdh4-pseudo::iptables"
 include_recipe "cdh4-pseudo::yum_repo"
 include_recipe "cdh4-pseudo::hadoop"
+include_recipe "cdh4-pseudo::hive"

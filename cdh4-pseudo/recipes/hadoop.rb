@@ -76,6 +76,8 @@ bash "hdfs setup" do
   hadoop fs -mkdir -p /var/lib/hadoop-hdfs/cache/mapred/mapred/staging
   hadoop fs -chmod 1777 /var/lib/hadoop-hdfs/cache/mapred/mapred/staging
   hadoop fs -chown -R mapred /var/lib/hadoop-hdfs/cache/mapred
+  hadoop fs -mkdir /user
+  hadoop fs -chmod -R 777 /user
   hadoop fs -mkdir -p /user/vagrant
   hadoop fs -chown vagrant /user/vagrant
   touch /var/lib/hadoop-hdfs/.hdfs_setup
