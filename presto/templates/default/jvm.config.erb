@@ -1,0 +1,12 @@
+-server
+-Xmx<%= node.presto['jvm']['xmx'] %>
+-XX:+UseConcMarkSweepGC
+-XX:+ExplicitGCInvokesConcurrent
+-XX:+CMSClassUnloadingEnabled
+-XX:+AggressiveOpts
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:OnOutOfMemoryError=kill -9 %p
+-XX:PermSize=<%= node.presto['jvm']['perm_size'] %>
+-XX:MaxPermSize=<%= node.presto['jvm']['max_perm_size'] %>
+-XX:ReservedCodeCacheSize=<%= node.presto['jvm']['reserved_code_cache_size'] %>
+-Xbootclasspath/p:/opt/presto/lib/floatingdecimal-0.1.jar
