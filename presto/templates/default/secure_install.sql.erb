@@ -1,0 +1,5 @@
+DROP DATABASE IF EXISTS test;
+DELETE FROM mysql.user WHERE user = '';
+SET PASSWORD FOR 'root'@'127.0.0.1' = PASSWORD('<%= node.hive['db']['root']['password'] %>');
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('<%= node.hive['db']['root']['password'] %>');
+FLUSH PRIVILEGES;

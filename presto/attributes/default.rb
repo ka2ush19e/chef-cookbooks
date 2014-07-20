@@ -6,18 +6,29 @@ default[:java][:jdk_version]    = "7"
 
 
 #---------------------------------------------------------------------------
+#   Hive Metastore
+#---------------------------------------------------------------------------
+# MySQL
+default.hive[:db][:root][:password] = "root"
+default.hive[:db][:hive][:password] = "hive"
+default.hive[:connection][:url]     = "jdbc:mysql://127.0.0.1/metastore?createDatabaseIfNotExist=true"
+default.hive[:connection][:driver]  = "com.mysql.jdbc.Driver"
+default.hive[:metastore][:uri]      = "thrift://127.0.0.1:9083"
+
+
+#---------------------------------------------------------------------------
 #   Presto Server
 #---------------------------------------------------------------------------
-# Paths
-default.presto[:path][:conf] = "/opt/presto-server/etc"
-default.presto[:path][:data] = "/var/presto-server/data"
+# Path
+default.presto[:path][:etc]  = "/opt/presto-server/etc"
+default.presto[:path][:data] = "/var/opt/presto"
 
 # Node
 default.presto[:node][:env] = "production"
 default.presto[:node][:id]  = "ffffffff-ffff-ffff-ffff-ffffffffffff"
 
 # JVM
-default.presto[:jvm][:xmx]                      = "16G"
+default.presto[:jvm][:xmx]                      = "512M"
 default.presto[:jvm][:perm_size]                = "150M"
 default.presto[:jvm][:max_perm_size]            = "150M"
 default.presto[:jvm][:reserved_code_cache_size] = "150M"

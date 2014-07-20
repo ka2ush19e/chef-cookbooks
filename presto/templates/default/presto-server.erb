@@ -1,0 +1,73 @@
+#!/bin/bash
+#
+# presto-server - this script starts and stops the presto-server daemon
+#
+# chkconfig:   345 90 10
+# description: Presto Server
+# pidfile:     <%= File.join(node.presto['path']['data'], 'var/run/launcher.pid') %>
+
+daemon="/opt/presto-server/bin/launcher"
+name="presto-server"
+user="presto"
+
+retval=0
+
+start() {
+  [ -x $presto_server ] || exit 5
+  echo -n "Starting $name: "
+  sudo -u $user $daemon start
+  retval=$?
+  return $retval
+}
+
+stop() {
+  [ -x $presto_server ] || exit 5
+  echo -n "Stopping $name: "
+  sudo -u $user $daemon stop
+  retval=$?
+  return $retval
+}
+
+restart() {
+  [ -x $presto_server ] || exit 5
+  echo -n "Restarting $name: "
+  sudo -u $user $daemon restart
+  retval=$?
+  return $retval
+}
+
+_kill() {
+  [ -x $presto_server ] || exit 5
+  echo -n "Killing $name: "
+  sudo -u $user $daemon kill
+  retval=$?
+  return $retval
+}
+
+status() {
+  [ -x $presto_server ] || exit 5
+  sudo -u $user $daemon status
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        restart
+        ;;
+    kill)
+        _kill
+        ;;
+    status)
+        status
+        ;;
+    *)
+        echo "Usage: $name {start|stop|restart|kill|status}"
+        exit 1
+        ;;
+esac
+exit $?
