@@ -1,6 +1,7 @@
 <%- if node.presto['config']['type'] == 'coordinator' -%>
 coordinator=true
 node-scheduler.include-coordinator=false
+discovery-server.enabled=true
 <%- end -%>
 <%- if node.presto['config']['type'] == 'worker' -%>
 coordinator=false
@@ -8,13 +9,10 @@ coordinator=false
 <%- if node.presto['config']['type'] == 'pseudo' -%>
 coordinator=true
 node-scheduler.include-coordinator=true
+discovery-server.enabled=true
 <%- end -%>
 
 http-server.http.port=<%= node.presto['config']['http_port'] %>
-
 task.max-memory=<%= node.presto['config']['task_max_memory'] %>
-
-discovery-server.enabled=true
 discovery.uri=<%= node.presto['config']['discovery_uri'] %>
-
 datasources=jmx,raptor,hive

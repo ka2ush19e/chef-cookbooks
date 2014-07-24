@@ -60,6 +60,11 @@
 </property>
 
 <property>
+  <name>hive.metastore.warehouse.dir</name>
+  <value><%= node.hive['metastore']['warehouse_dir'] %></value>
+</property>
+
+<property>
   <name>hive.metastore.uris</name>
   <value><%= node.hive['metastore']['uri'] %></value>
   <description>IP address (or fully-qualified domain name) and port of the metastore host</description>

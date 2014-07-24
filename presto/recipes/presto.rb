@@ -8,11 +8,20 @@
 #
 
 # Install PrestoServer
+cookbook_file "/tmp/presto-server-0.73.tar.gz" do
+  not_if { File.exist?("/opt/presto-server") }
+  source "presto-server-0.73.tar.gz"
+  owner  "root"
+  group  "root"
+  mode   0644
+  action :create
+end
+
 bash "install presto-server" do
   not_if { File.exist?("/opt/presto-server") }
-  user "root"
+  user  "root"
+  flags "-e"
   code <<-EOH
-    wget -nc -q http://central.maven.org/maven2/com/facebook/presto/presto-server/0.73/presto-server-0.73.tar.gz -P /tmp/
     tar zxf /tmp/presto-server-0.73.tar.gz -C /tmp/
     mv /tmp/presto-server-0.73 /opt/
     ln -s /opt/presto-server-0.73 /opt/presto-server
@@ -21,14 +30,12 @@ bash "install presto-server" do
 end
 
 # Install PrestoClient
-bash "install presto-cli" do
-  not_if { File.exist?("/opt/presto-server/bin/presto") }
-  user "root"
-  code <<-EOH
-    wget -nc -q http://central.maven.org/maven2/com/facebook/presto/presto-cli/0.73/presto-cli-0.73-executable.jar -P /opt/presto-server/bin
-    mv /opt/presto-server/bin/presto-cli-0.73-executable.jar /opt/presto-server/bin/presto
-    chmod +x /opt/presto-server/bin/presto
-  EOH
+cookbook_file "/opt/presto-server/bin/presto" do
+  source "presto-cli-0.73-executable.jar"
+  owner  "root"
+  group  "root"
+  mode   0755
+  action :create
 end
 
 # Set configs
@@ -42,7 +49,7 @@ catalog_dir = File.join(etc_dir, 'catalog')
     not_if { Dir.exist?(dir) }
     owner  "root"
     group  "root"
-    mode   0644
+    mode   0755
     action :create
   end
 end
@@ -92,7 +99,8 @@ template "/etc/init.d/presto-server" do
 end
 
 bash "add presto-server service" do
-  not_if "chkconfig --list | grep prest-server"
+  not_if "chkconfig --list | grep presto-server"
+  flags "-e"
   code <<-EOC
     chkconfig --add presto-server
   EOC

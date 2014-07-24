@@ -11,9 +11,12 @@ default[:java][:jdk_version]    = "7"
 # MySQL
 default.hive[:db][:root][:password] = "root"
 default.hive[:db][:hive][:password] = "hive"
-default.hive[:connection][:url]     = "jdbc:mysql://127.0.0.1/metastore?createDatabaseIfNotExist=true"
-default.hive[:connection][:driver]  = "com.mysql.jdbc.Driver"
-default.hive[:metastore][:uri]      = "thrift://127.0.0.1:9083"
+
+# Hive
+default.hive[:connection][:url]          = "jdbc:mysql://127.0.0.1/metastore?createDatabaseIfNotExist=true"
+default.hive[:connection][:driver]       = "com.mysql.jdbc.Driver"
+default.hive[:metastore][:warehouse_dir] = "s3n://demo-presto/"
+default.hive[:metastore][:uri]           = "thrift://127.0.0.1:9083"
 
 
 #---------------------------------------------------------------------------
