@@ -41,7 +41,7 @@ bash 'copy spark assembly jar to hdfs' do
   user 'spark'
   code <<-EOH
   hadoop fs -mkdir -p /user/spark/share/lib
-  hadoop fs -put /usr/lib/spark/assembly/lib//spark-assembly.jar  /user/spark/share/lib/spark-assembly.jar
+  hadoop fs -put /usr/lib/spark/assembly/lib/spark-assembly.jar  /user/spark/share/lib/spark-assembly.jar
   EOH
   not_if 'hadoop fs -ls /user/spark/share/lib/spark-assembly.jar'
 end
