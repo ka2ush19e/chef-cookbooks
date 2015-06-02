@@ -15,7 +15,7 @@ if node.has_key?('hadoop') && node['hadoop'].has_key?('users')
       hadoop fs -mkdir /user/#{user}
       hadoop fs -chown #{user} /user/#{user}
       EOH
-      not_if "hadoop fs -ls /user | grep #{user}"
+      not_if "hadoop fs -ls /user/#{user}"
     end
   end
 end

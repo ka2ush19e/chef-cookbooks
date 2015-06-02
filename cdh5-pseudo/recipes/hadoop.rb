@@ -51,7 +51,7 @@ end
 
 %w{hadoop-hdfs-namenode hadoop-hdfs-datanode}.each do |s|
   service s do
-    action :start
+    action [:enable, :start]
   end
 end
 
@@ -66,6 +66,6 @@ end
 
 %w{hadoop-yarn-resourcemanager hadoop-yarn-nodemanager hadoop-mapreduce-historyserver}.each do |s|
   service s do
-    action :start
+    action [:enable, :start]
   end
 end
